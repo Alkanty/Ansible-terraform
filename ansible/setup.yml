@@ -1,0 +1,14 @@
+
+# lbproject/setup.yml
+
+- name: Setup Web Server
+  hosts: webserver
+  become: true
+  roles:
+    - role: webrole
+
+- name: Setup Load Balancer
+  hosts: haproxy
+  become: true
+  roles:
+    - role: lbrole

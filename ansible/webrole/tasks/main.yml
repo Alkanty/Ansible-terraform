@@ -1,0 +1,17 @@
+
+# webrole/tasks/main.yml
+
+- name: Install web server package
+  package:
+    name: apache2
+    state: present
+
+- name: Copy web page
+  copy:
+    content: "hii my name is ayush {{ ansible_nodename }}"
+    dest: /var/www/html/index.html
+
+- name: Start web server service
+  service:
+    name: apache2
+    state: started
