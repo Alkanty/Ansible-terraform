@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install HAProxy
+      apt:
+        name: haproxy
+        state: present
+
+    - name: Enable and start HAProxy
+      systemd:
+        name: haproxy
+        enabled: yes
+        state: started
